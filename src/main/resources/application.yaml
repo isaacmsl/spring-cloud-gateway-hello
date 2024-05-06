@@ -1,0 +1,18 @@
+spring:
+    application:
+        name: scg-hello
+    cloud:
+        gateway:
+            routes:
+                -   id: hello-world
+                    uri: https://httpbin.org/
+                    predicates:
+                        - Path=/hello
+                    filters:
+                        - SetPath=/get
+                -   id : chuck-norris
+                    uri: https://api.chucknorris.io/
+                    predicates:
+                        - Path=/chuck
+                    filters:
+                        - SetPath=/jokes/random/
